@@ -20,9 +20,7 @@ with pkgs; let
     (readDir path)));
 
   # Get all directories from current path
-  directories = filterDirContents modulesPath "directory";
-  # Filter out directories that don't contain a "config" subdirectory
-  modules = filter (dirName: pathExists (getConfigPath dirName)) directories;
+  modules = filterDirContents modulesPath "directory";
   # Copy the config files to nix store
   configDerivations =
     map (moduleName: (mkConfigDerivation moduleName)) modules;

@@ -13,7 +13,8 @@
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
-        wrap-neovim-fun = pkgs:
+        customRC = ((import ./modules) pkgs).customRC;
+        wrapNeovim = pkgs:
           pkgs.wrapNeovim pkgs.neovim-unwrapped {
             viAlias = true;
             configure = {
@@ -21,12 +22,12 @@
                 start = [telescope-nvim];
               };
 
-              customRC = ((import ./modules) pkgs).customRC;
+              inherit customRC;
             };
           };
 
         my-neovim-overlay = self: super: {
-          myNeovim = wrap-neovim-fun super;
+          myNeovim = wrapNeovim super;
         };
 
         pkgs = import nixpkgs {
@@ -35,12 +36,19 @@
             my-neovim-overlay
           ];
         };
-      in {
-        packages.ripgrep = pkgs.ripgrep;
-        packages.default = pkgs.myNeovim;
+
+        externalDependencies = [pkgs.ripgrep];
+      in rec {
+        packages.default = pkgs.writeShellApplication {
+          name = "nix-flakes-nvim";
+          runtimeInputs = [pkgs.myNeovim] ++ externalDependencies;
+          text = ''
+            nvim
+          '';
+        };
         apps.default = {
           type = "app";
-          program = "${pkgs.myNeovim}/bin/nvim";
+          program = "${packages.default}/bin/nix-flakes-nvim";
         };
       }
     );
