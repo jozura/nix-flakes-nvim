@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   name = "explorer";
-  startPackages = [pkgs.vimPlugins.nvim-tree-lua];
+  startPackages = with pkgs.vimPlugins; [nvim-tree-lua nvim-web-devicons];
   optPackages = [];
   additionalDependencies = [];
 }

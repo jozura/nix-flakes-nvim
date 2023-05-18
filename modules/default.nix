@@ -4,6 +4,9 @@ with pkgs.lib.lists; let
     ./init
     ./fuzzyfinder
     ./explorer
+    ./treesitter
+    ./bufferline
+    ./styles
   ];
   modules = map (module: (import module) pkgs) imports;
   moduleNames = map (module: module.name) modules;
