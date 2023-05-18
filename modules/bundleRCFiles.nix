@@ -6,8 +6,8 @@ with builtins;
 with pkgs; let
   modulesPath = ./.;
   getConfigPath = moduleName: "${modulesPath}/${moduleName}";
-  # A helper function to get the names of all files ("regular")
-  # or directories in a certain path
+  # A helper function to get the names of all files of a certain
+  # type. E.g "regular" or "directory"
   filterDirContents = path: type: (attrNames (filterAttrs
     (k: v: v == type)
     (readDir path)));

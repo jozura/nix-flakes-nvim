@@ -14,9 +14,9 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         customRC = ((import ./modules) pkgs).customRC;
+        additionalDependencies = [pkgs.ripgrep];
         wrapNeovim = pkgs:
           pkgs.wrapNeovim pkgs.neovim-unwrapped {
-            viAlias = true;
             configure = {
               packages.myVimPackage = with pkgs.vimPlugins; {
                 start = [telescope-nvim];
@@ -36,12 +36,10 @@
             my-neovim-overlay
           ];
         };
-
-        externalDependencies = [pkgs.ripgrep];
       in rec {
         packages.default = pkgs.writeShellApplication {
           name = "nix-flakes-nvim";
-          runtimeInputs = [pkgs.myNeovim] ++ externalDependencies;
+          runtimeInputs = [pkgs.myNeovim] ++ additionalDependencies;
           text = ''
             nvim
           '';
