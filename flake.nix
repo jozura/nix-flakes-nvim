@@ -13,40 +13,29 @@
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
+        pkgs = nixpkgs.legacyPackages.${system};
         customRC = ((import ./modules) pkgs).customRC;
         additionalDependencies = [pkgs.ripgrep];
-        wrapNeovim = pkgs:
-          pkgs.wrapNeovim pkgs.neovim-unwrapped {
-            configure = {
-              packages.myVimPackage = with pkgs.vimPlugins; {
-                start = [telescope-nvim];
-              };
-
-              inherit customRC;
+        myNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
+          configure = {
+            packages.myVimPackage = with pkgs.vimPlugins; {
+              start = [telescope-nvim];
             };
+
+            inherit customRC;
           };
-
-        my-neovim-overlay = self: super: {
-          myNeovim = wrapNeovim super;
-        };
-
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            my-neovim-overlay
-          ];
         };
       in rec {
         packages.default = pkgs.writeShellApplication {
-          name = "nix-flakes-nvim";
-          runtimeInputs = [pkgs.myNeovim] ++ additionalDependencies;
+          name = "vim";
+          runtimeInputs = [myNeovim] ++ additionalDependencies;
           text = ''
             nvim
           '';
         };
         apps.default = {
           type = "app";
-          program = "${packages.default}/bin/nix-flakes-nvim";
+          program = "${packages.default}/bin/vim";
         };
       }
     );
