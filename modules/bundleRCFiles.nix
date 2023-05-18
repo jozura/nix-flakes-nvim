@@ -1,11 +1,15 @@
-{pkgs, ...}:
+{
+  pkgs,
+  modules,
+  ...
+}:
 with pkgs.lib.attrsets;
 with pkgs.lib.lists;
 with pkgs.lib.strings;
 with builtins;
 with pkgs; let
   modulesPath = ./.;
-  getConfigPath = moduleName: "${modulesPath}/${moduleName}";
+  getConfigPath = module: "${modulesPath}/${module}";
   # A helper function to get the names of all files of a certain
   # type. E.g "regular" or "directory"
   filterDirContents = path: type: (attrNames (filterAttrs
@@ -13,7 +17,6 @@ with pkgs; let
     (readDir path)));
 
   # Get the names of all directories (modules) in the modules path (./)
-  modules = filterDirContents modulesPath "directory";
   # Get full path to the config directory for each module
   configDirPaths = map (moduleName: getConfigPath moduleName) modules;
   # Form the complete path to each file in each config directory

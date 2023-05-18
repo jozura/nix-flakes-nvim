@@ -14,21 +14,20 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
-        customRC = ((import ./modules) pkgs).customRC;
-        additionalDependencies = [pkgs.ripgrep];
+        moduleConfig = (import ./modules) pkgs;
         myNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
-            packages.myVimPackage = with pkgs.vimPlugins; {
-              start = [telescope-nvim];
+            packages.myVimPackage = {
+              start = moduleConfig.start;
+              opt = moduleConfig.opt;
             };
-
-            inherit customRC;
+            customRC = moduleConfig.customRC;
           };
         };
       in rec {
         packages.default = pkgs.writeShellApplication {
           name = "vim";
-          runtimeInputs = [myNeovim] ++ additionalDependencies;
+          runtimeInputs = [myNeovim] ++ moduleConfig.additionalDependencies;
           text = ''
             nvim
           '';
