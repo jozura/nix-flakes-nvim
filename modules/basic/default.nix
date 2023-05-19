@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  name = "init";
+  name = "basic";
   startPackages = with pkgs.vimPlugins; [];
   optPackages = [];
   additionalDependencies = [];

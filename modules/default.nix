@@ -1,7 +1,7 @@
 {pkgs, ...}:
 with pkgs.lib.lists; let
   imports = [
-    ./init
+    ./basic
     ./fuzzyfinder
     ./explorer
     ./treesitter
@@ -12,12 +12,15 @@ with pkgs.lib.lists; let
   moduleNames = map (module: module.name) modules;
   startPackages = flatten (map (module: module.startPackages) modules);
   optPackages = flatten (map (module: module.optPackages) modules);
-  additionalDependencies = flatten (map (module: module.additionalDependencies) modules);
-in {
-  customRC = (import ./bundleRCFiles.nix) {
+  additionalDependencies = flatten 
+  	(map (module: module.additionalDependencies) modules);
+  asd = (import ./bundleRCFiles.nix) {
     inherit pkgs;
     modules = moduleNames;
   };
+in {
+  customRC = asd.customRC;
+  path = asd.path;
   start = startPackages;
   opt = optPackages;
   inherit additionalDependencies;

@@ -1,6 +1,5 @@
--- Map the <leader> key to " "
+-- Set leader to spacebar
 vim.g.mapleader = " "
-
 -- Fix indenting
 vim.opt.smartindent = true
 vim.opt.autoindent = true
@@ -14,4 +13,10 @@ vim.opt.mouse = "n"
 vim.opt.termguicolors = true
 -- Highlight the whole line the cursor is on
 vim.opt.cursorline = true
+-- Enable line numbers
+vim.wo.number = true
+vim.opt.colorcolumn = "80"
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
