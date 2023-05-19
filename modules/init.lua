@@ -1,6 +1,8 @@
 local basic = require("basic")
 local explorer = require("explorer")
 print("hello")
+basic.setKeys()
+basic.runSetup()
 print(basic.asd)
 print(explorer.asd)
 function getTableKeys(tab)

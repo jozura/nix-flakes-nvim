@@ -1,2 +1,6 @@
-print("Hello world!")
-return {asd = 2}
+module = {}
+
+module.runSetup = require('basicSetup')
+module.setKeys = require('basicKeymaps')
+
+return module
