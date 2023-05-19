@@ -11,22 +11,25 @@ with builtins;
 with pkgs; let
   modulesPath = ./.;
 
+  # Helper functions
   prependCurrPath = currPath: name: "${currPath}/${name}";
   filterFiles = type: directoryContents:
     attrNames (filterAttrs (k: v: v == type) directoryContents);
   flatMap = f: list: flatten (map f list);
-  getAllFilePaths = currPath: let
-    directoryContents = readDir currPath;
+  # A function that recursively finds all .lua files in "path"
+  getAllLuaFileAbsolutePaths = path: let
+    directoryContents = readDir path;
     files = filterFiles "regular" directoryContents;
-    filePaths = map (prependCurrPath currPath) files;
+    luaFiles = filter (fileName: hasSuffix "lua" fileName) files;
+    luaFilePaths = map (prependCurrPath path) luaFiles;
     directories = filterFiles "directory" directoryContents;
-    directoryPaths = map (prependCurrPath currPath) directories;
+    directoryPaths = map (prependCurrPath path) directories;
   in
-    filePaths ++ (flatMap getAllFilePaths directoryPaths);
+    luaFilePaths ++ (flatMap getAllLuaFileAbsolutePaths directoryPaths);
 
   # Copy the modules folder into nix store
   modulesDerivation = stdenv.mkDerivation {
-    name = "nvim-modules";
+    name = "lua-config-nvim";
     src = modulesPath;
     installPhase = ''
       mkdir -p $out/
@@ -34,14 +37,17 @@ with pkgs; let
     '';
   };
 
-  filePaths = getAllFilePaths "${modulesDerivation}";
-  # Filter out .lua and .vim files
-  luaRCPaths = filter (path: hasSuffix "lua" path) filePaths;
-  vimRCPaths = filter (path: hasSuffix "vim" path) filePaths;
-  # Write the customRC config that sources both types of config files
-  luaRC = map (path: "luafile ${path}") luaRCPaths;
-  vimRC = map (path: "source ${path}") vimRCPaths;
+  # Get the nix store path of all lua files so that they can be set in the
+  # $LUA_PATH environment variable. This makes it possible to 'require' them
+  # from ./init.lua
+  # luaFilePaths = getAllLuaFileAbsolutePaths "${modulesDerivation}";
+  tmp = map (mod: "${mod}/?.lua") (filterFiles "directory" (readDir ./.));
+  luaPath = concatStringsSep ";" tmp;
+  #luaPath = concatStringsSep ";" (map (mod: mod + "${mod}/?.lua") tmp);
+  # luaPath = concatStringsSep ";" luaFilePaths;
 in {
-  customRC = concatStringsSep "\n" (luaRC ++ vimRC);
-  path = "${modulesDerivation}/";
+  # Sets ./init.lua as the entrypoint to my neovim config
+  customRC = "luafile ${modulesDerivation}/init.lua";
+  luaPath = "${luaPath}";
+  # luaPath = "${modulesDerivation}";
 }

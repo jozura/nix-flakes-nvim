@@ -1,10 +1,10 @@
 {pkgs, ...}: {
-  name = "styles";
+  name = "colorscheme";
   startPackages = with pkgs.vimPlugins; [
-  	kanagawa-nvim
-	indent-blankline-nvim
-	lualine-nvim
-	lualine-lsp-progress
+    kanagawa-nvim
+    indent-blankline-nvim
+    lualine-nvim
+    lualine-lsp-progress
   ];
   optPackages = [];
   additionalDependencies = [];

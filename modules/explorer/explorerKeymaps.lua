@@ -1,11 +1,14 @@
--- Toggle the tree
-vim.keymap.set('n', '<F6>', ':NvimTreeToggle<CR>', {})
--- Find the currently focused file in the tree
-vim.keymap.set('n', '<F5>', ':NvimTreeFindFile<CR>', {})
+keymaps = {}
+
+function keymaps.setKeys()
+    -- Toggle the tree
+    vim.keymap.set('n', '<F6>', ':NvimTreeToggle<CR>', {})
+    -- Find the currently focused file in the tree
+    vim.keymap.set('n', '<F5>', ':NvimTreeFindFile<CR>', {})
+end
 
 -- Need to set these keymaps in an exported function that is imported in
 -- nvim-tree.lua because nvim-tree sets them when it is toggled on
-keymaps = {}
 function keymaps.mapKeysOnAttach(api, opts)
 	-- Default bindings that I frequently use. Specified here
 	-- in case I ever wish to migrate to a different file explorer

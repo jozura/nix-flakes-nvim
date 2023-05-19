@@ -29,7 +29,7 @@
           name = "vim";
           runtimeInputs = [myNeovim] ++ moduleConfig.additionalDependencies;
           text = ''
-            export LUA_PATH="${moduleConfig.path}explorer/keymaps.lua;;"
+            export LUA_PATH="${moduleConfig.luaPath};"
             nvim
           '';
         };
