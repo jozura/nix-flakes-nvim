@@ -8,6 +8,7 @@ with pkgs.lib.strings; let
     ./treesitter
     ./bufferline
     ./colorscheme
+	./statusbar
   ];
   nixConfig = map (module: (import module) pkgs) enabledModules;
   startPackages =

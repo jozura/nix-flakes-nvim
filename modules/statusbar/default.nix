@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   startPackages = with pkgs.vimPlugins; [
-    kanagawa-nvim
+    lualine-nvim
+    lualine-lsp-progress
   ];
   optPackages = [];
   additionalDependencies = [];
