@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  name = "colorscheme";
   startPackages = with pkgs.vimPlugins; [
     kanagawa-nvim
     indent-blankline-nvim

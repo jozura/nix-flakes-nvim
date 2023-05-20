@@ -1,6 +1,6 @@
 {
   pkgs,
-  modules,
+  enabledModules,
   ...
 }:
 with pkgs.lib.attrsets;
@@ -21,10 +21,10 @@ with pkgs; let
     '';
   };
 
-  filterFiles = type: path:
-    attrNames (filterAttrs (k: v: v == type) (readDir path));
-
-  modulesLuaPaths = map (mod: "${modulesDerivation}/${mod}/?.lua") (filterFiles "directory" ./.);
+  modulesLuaPaths =
+    map
+    (mod: "${modulesDerivation}/${mod}/?.lua")
+    enabledModules;
   luaPath = concatStringsSep ";" modulesLuaPaths;
 in {
   # Sets ./init.lua as the entrypoint to my neovim config

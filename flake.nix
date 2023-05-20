@@ -24,13 +24,15 @@
             customRC = moduleConfig.customRC;
           };
         };
+        enabledModules = builtins.concatStringsSep " " moduleConfig.enabledModules;
       in rec {
         packages.default = pkgs.writeShellApplication {
           name = "vim";
           runtimeInputs = [myNeovim] ++ moduleConfig.additionalDependencies;
           text = ''
-            export LUA_PATH="${moduleConfig.luaPath};"
-            nvim
+            export ENABLED_MODULES="${enabledModules}"
+                   export LUA_PATH="${moduleConfig.luaPath};"
+                   nvim
           '';
         };
         apps.default = {

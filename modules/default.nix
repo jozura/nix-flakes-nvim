@@ -1,6 +1,7 @@
 {pkgs, ...}:
-with pkgs.lib.lists; let
-  imports = [
+with pkgs.lib.lists;
+with pkgs.lib.strings; let
+  enabledModules = [
     ./basic
     ./fuzzyfinder
     ./explorer
@@ -8,20 +9,26 @@ with pkgs.lib.lists; let
     ./bufferline
     ./colorscheme
   ];
-  modules = map (module: (import module) pkgs) imports;
-  moduleNames = map (module: module.name) modules;
-  startPackages = flatten (map (module: module.startPackages) modules);
-  optPackages = flatten (map (module: module.optPackages) modules);
+  nixConfig = map (module: (import module) pkgs) enabledModules;
+  startPackages =
+    unique
+    (flatten (map (module: module.startPackages) nixConfig));
+  optPackages =
+    unique
+    (flatten (map (module: module.optPackages) nixConfig));
   additionalDependencies =
     flatten
-    (map (module: module.additionalDependencies) modules);
+    (map (module: module.additionalDependencies) nixConfig);
+
+  moduleNames = map (module: last (splitString "/" module)) enabledModules;
   luaConfig = (import ./setupLua.nix) {
     inherit pkgs;
-    modules = moduleNames;
+    enabledModules = moduleNames;
   };
 in {
   customRC = luaConfig.customRC;
   luaPath = luaConfig.luaPath;
+  enabledModules = moduleNames;
   start = startPackages;
   opt = optPackages;
   inherit additionalDependencies;

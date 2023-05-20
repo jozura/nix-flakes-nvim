@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  name = "treesitter";
   startPackages = [
     (pkgs
       .vimPlugins
