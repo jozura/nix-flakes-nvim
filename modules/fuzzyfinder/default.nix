@@ -4,3 +4,4 @@
   optPackages = [];
   additionalDependencies = [pkgs.ripgrep];
 }
+

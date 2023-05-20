@@ -1,5 +1,6 @@
-local keymaps = require("_explorerKeymaps")
-local function my_on_attach(bufnr)
+local myKeymaps = require("_explorerKeymaps")
+
+local function myOnAttach(bufnr)
 	local api = require('nvim-tree.api')
 
 	local function opts(desc)
@@ -12,7 +13,7 @@ local function my_on_attach(bufnr)
         }
 	  end
     -- Set the keys defined in my keymap
-    keymaps.mapKeysOnAttach(api, opts)
+    myKeymaps.mapKeysOnAttach(api, opts)
     -- BEGIN_DEFAULT_ON_ATTACH
     vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,
         opts('Open: In Place'))
@@ -107,7 +108,7 @@ function setup()
       view = {
         width = 30,
       },
-      on_attach = my_on_attach,
+      on_attach = myOnAttach,
       renderer = {
         group_empty = true,
       },
@@ -121,3 +122,4 @@ function setup()
 end
 
 return setup
+
