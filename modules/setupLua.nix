@@ -21,13 +21,15 @@ with pkgs; let
     '';
   };
 
-  filterFiles = type: directoryContents:
-    attrNames (filterAttrs (k: v: v == type) directoryContents);
+  filterFiles = type: path:
+    attrNames (filterAttrs (k: v: v == type) (readDir path));
 
-  module = map (mod: "${modulesDerivation}/${mod}/?.lua") (filterFiles "directory" (readDir ./.));
-  luaPath = concatStringsSep ";" module;
+  modulesLuaPaths = map (mod: "${modulesDerivation}/${mod}/?.lua") (filterFiles "directory" ./.);
+  luaPath = concatStringsSep ";" modulesLuaPaths;
 in {
   # Sets ./init.lua as the entrypoint to my neovim config
   customRC = "luafile ${modulesDerivation}/init.lua";
+  # Sets the $LUA_PATH environment variable such that files
+  # matching modules/*/*.lua can be found by neovim
   luaPath = "${luaPath}";
 }

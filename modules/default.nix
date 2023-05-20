@@ -15,7 +15,7 @@ with pkgs.lib.lists; let
   additionalDependencies =
     flatten
     (map (module: module.additionalDependencies) modules);
-  luaConfig = (import ./bundleRCFiles.nix) {
+  luaConfig = (import ./setupLua.nix) {
     inherit pkgs;
     modules = moduleNames;
   };
