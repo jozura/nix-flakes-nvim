@@ -1,4 +1,4 @@
-function setKeys()
+function keymaps()
     vim.keymap.set("n", "<leader>h", "<C-w>h", {})
     vim.keymap.set("n", "<leader>j", "<C-w>j", {})
     vim.keymap.set("n", "<leader>k", "<C-w>k", {})
@@ -8,4 +8,5 @@ function setKeys()
     vim.keymap.set("n", "<leader>sa", ":wqa!<CR>", {})
 end
 
-return setKeys
+return keymaps
+

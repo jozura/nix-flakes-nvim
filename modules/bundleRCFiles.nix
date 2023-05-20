@@ -24,7 +24,7 @@ with pkgs; let
   filterFiles = type: directoryContents:
     attrNames (filterAttrs (k: v: v == type) directoryContents);
 
-  module = map (mod: "${mod}/?.lua") (filterFiles "directory" (readDir ./.));
+  module = map (mod: "${modulesDerivation}/${mod}/?.lua") (filterFiles "directory" (readDir ./.));
   luaPath = concatStringsSep ";" module;
 in {
   # Sets ./init.lua as the entrypoint to my neovim config

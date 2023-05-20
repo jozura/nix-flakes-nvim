@@ -1,6 +1,6 @@
 keymaps = {}
 
-function keymaps.setKeys()
+function keymaps.keymaps()
     -- Toggle the tree
     vim.keymap.set('n', '<F6>', ':NvimTreeToggle<CR>', {})
     -- Find the currently focused file in the tree

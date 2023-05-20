@@ -1,4 +1,4 @@
-local keymaps = require("explorerKeymaps")
+local keymaps = require("_explorerKeymaps")
 local function my_on_attach(bufnr)
 	local api = require('nvim-tree.api')
 
@@ -101,7 +101,7 @@ local function my_on_attach(bufnr)
     -- END_DEFAULT_ON_ATTACH
 end
 
-function run()
+function setup()
     require("nvim-tree").setup({
       sort_by = "case_sensitive",
       view = {
@@ -120,4 +120,4 @@ function run()
     })
 end
 
-return run
+return setup
