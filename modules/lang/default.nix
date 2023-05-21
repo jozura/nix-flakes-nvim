@@ -10,8 +10,6 @@
     # Snippets (used by Autocompletion)
     luasnip
     cmp_luasnip
-    # Linting (currently unused)
-    nvim-lint
   ];
   optPackages = [];
   additionalDependencies = [
