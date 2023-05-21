@@ -29,10 +29,6 @@ function keymaps()
         -- <C-r>m mixed reset
     vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
 
-    -- LSP
-    vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, {})
-    vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, {})
-    vim.keymap.set('n', '<leader>lr', builtin.lsp_references, {})
 end
 
 return keymaps
