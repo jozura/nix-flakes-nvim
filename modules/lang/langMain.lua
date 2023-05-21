@@ -1,11 +1,9 @@
 module = {}
 local treesitterSetup = require('_treesitterSetup')
-local nvimCompSetup = require('_nvimCmpSetup')
+local autocompleteSetup = require('_autocompleteSetup')
 local lspSetup = require('_lspSetup')
-local lspKeymaps = require('_lspKeymaps')
 function runSetup()
-	lspSetup(nvimCompSetup())
-	lspKeymaps()
+	lspSetup(autocompleteSetup())
 	treesitterSetup()
 end
 

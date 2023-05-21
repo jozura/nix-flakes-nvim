@@ -4,8 +4,9 @@
     vim-sleuth
     auto-pairs
     gitsigns-nvim
+    telescope-nvim
   ];
   optPackages = [];
-  additionalDependencies = [];
+  additionalDependencies = [pkgs.ripgrep];
 }
 

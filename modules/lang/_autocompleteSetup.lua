@@ -1,7 +1,7 @@
 -- Set up nvim-cmp.
 function setup()
   local cmp = require 'cmp'
-  local setKeymaps = require '_nvimCmpKeymaps'
+  local setKeymaps = require '_autocompleteKeymaps'
 
   cmp.setup({
     snippet = {

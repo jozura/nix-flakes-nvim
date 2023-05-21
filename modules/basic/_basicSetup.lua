@@ -42,7 +42,7 @@ function setup()
 	vim.o.completeopt = "menuone,noselect"
 	-- Always show a two character column next to the line number
 	vim.wo.signcolumn = "yes"
-	-- temporarily here
+
 	require('gitsigns').setup()
 end
 
