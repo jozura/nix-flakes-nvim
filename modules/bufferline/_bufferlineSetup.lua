@@ -1,6 +1,5 @@
 function setup()
-    require("bufferline").setup{}
+    require("bufferline").setup {}
 end
 
 return setup
-

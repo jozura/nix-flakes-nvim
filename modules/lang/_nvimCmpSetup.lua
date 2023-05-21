@@ -1,7 +1,7 @@
 -- Set up nvim-cmp.
 function setup()
-  local cmp = require'cmp'
-  local setKeymaps = require'_nvimCmpKeymaps'
+  local cmp = require 'cmp'
+  local setKeymaps = require '_nvimCmpKeymaps'
 
   cmp.setup({
     snippet = {
@@ -21,7 +21,7 @@ function setup()
   -- Set configuration for specific filetype.
   -- cmp.setup.filetype('gitcommit', {
   --   sources = cmp.config.sources({
-    --   -- You can specify the `cmp_git` source if you were installed it.
+  --   -- You can specify the `cmp_git` source if you were installed it.
   --     { name = 'cmp_git' },
   --   }, {
   --     { name = 'buffer' },

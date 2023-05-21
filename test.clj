@@ -1,3 +1,0 @@
-(defn myFunc [asd, test]
-
-  )

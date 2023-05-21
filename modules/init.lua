@@ -3,8 +3,8 @@ assert(enabledModules, "ENABLED_MODULES environment variable is not set")
 
 print("Enabled modules:")
 for moduleName in string.gmatch(enabledModules, "%a+") do
-    print("  "..moduleName)
-    local moduleMain = moduleName.."Main"
+    print("  " .. moduleName)
+    local moduleMain = moduleName .. "Main"
     local module = require(moduleMain)
     if module.runSetup ~= nil then
         module.runSetup()
