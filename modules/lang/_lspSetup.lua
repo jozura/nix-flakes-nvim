@@ -1,9 +1,10 @@
-function setup()
+function setup(autoCompleteCapabilities)
 	local lspconfig = require("lspconfig")
-	lspconfig.clojure_lsp.setup{}
-	lspconfig.tsserver.setup{}
-	lspconfig.nil_ls.setup{}
-	require'lspconfig'.lua_ls.setup {
+	lspconfig.clojure_lsp.setup{capabilities = autoCompleteCapabilities}
+	lspconfig.tsserver.setup{capabilities = autoCompleteCapabilities}
+	lspconfig.nil_ls.setup{capabilities = autoCompleteCapabilities}
+	lspconfig.lua_ls.setup {
+	capabilities = autoCompleteCapabilities,
 	  settings = {
 	    Lua = {
 	      runtime = {

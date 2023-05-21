@@ -3,13 +3,13 @@ with pkgs.lib.lists;
 with pkgs.lib.strings; let
   enabledModules = [
     ./basic
-    ./fuzzyfinder
+    ./telescope
     ./explorer
     ./treesitter
     ./bufferline
     ./colorscheme
-	./statusbar
-	./lsp
+    ./statusbar
+    ./lang
   ];
   nixConfig = map (module: (import module) pkgs) enabledModules;
   startPackages =
