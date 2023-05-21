@@ -115,9 +115,6 @@ function setup()
       modified = {
         enable = true,
       },
-      filters = {
-        dotfiles = true,
-      },
     })
 end
 
