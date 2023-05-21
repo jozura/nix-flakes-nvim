@@ -1,5 +1,8 @@
 {pkgs, ...}: {
   startPackages = with pkgs.vimPlugins; [
+    nvim-treesitter
+      .withPlugins
+      (ps: with ps; [nix lua clojure javascript typescript])
     nvim-lspconfig
     # Autocompletion
     cmp-nvim-lsp

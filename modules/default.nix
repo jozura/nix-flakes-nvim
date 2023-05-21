@@ -5,7 +5,6 @@ with pkgs.lib.strings; let
     ./basic
     ./telescope
     ./explorer
-    ./treesitter
     ./bufferline
     ./colorscheme
     ./statusbar
