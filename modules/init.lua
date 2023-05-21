@@ -1,5 +1,7 @@
 print("Enabled modules:")
-for moduleName in string.gmatch(os.getenv("ENABLED_MODULES"), "%a+") do
+local e = os.getenv("ENABLED_MODULES")
+assert(e, "ENABLED_MODULES environment variable is not set")
+for moduleName in string.gmatch(e, "%a+") do
     print("  "..moduleName)
     local moduleMain = moduleName.."Main"
     local module = require(moduleMain)

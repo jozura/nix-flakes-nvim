@@ -9,6 +9,7 @@ with pkgs.lib.strings; let
     ./bufferline
     ./colorscheme
 	./statusbar
+	./lsp
   ];
   nixConfig = map (module: (import module) pkgs) enabledModules;
   startPackages =

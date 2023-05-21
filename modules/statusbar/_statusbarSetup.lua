@@ -1,4 +1,4 @@
-function setup()    
+function setup()
     -- Status bar --
     require('lualine').setup {
       options = {
@@ -22,10 +22,10 @@ function setup()
       sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
+        lualine_c = {'filename', 'lsp_progress'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
-        lualine_z = {'lsp_progress'} -- plugin to show lsp status
+        lualine_z = {'location'} -- plugin to show lsp status
       },
       inactive_sections = {
         lualine_a = {},

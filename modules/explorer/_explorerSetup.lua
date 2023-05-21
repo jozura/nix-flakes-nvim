@@ -9,7 +9,7 @@ local function myOnAttach(bufnr)
             buffer = bufnr,
             noremap = true,
             silent = true,
-            nowait = true 
+            nowait = true
         }
 	  end
     -- Set the keys defined in my keymap
