@@ -14,11 +14,21 @@ function setup()
 	-- Set termguicolors to enable highlight groups
 	vim.opt.termguicolors = true
 	-- Highlight the whole line the cursor is on
-	vim.opt.cursorline = true
+	-- (only in the current window)
+	vim.cmd([[
+		augroup CursorLineHighlight
+		  autocmd!
+		  autocmd WinEnter * lua vim.wo.cursorline = true
+		  autocmd WinLeave * lua vim.wo.cursorline = false
+		augroup END
+	]])
+	-- vim.opt.cursorline = true
 	-- Enable line numbers
 	vim.wo.relativenumber = true
 	-- Set a line length guide on column 80
 	vim.opt.colorcolumn = "80"
+	-- When doing a vertical split, put the new buffer on the right side
+	vim.opt.splitright = true
 	-- Disable netrw (the default file explorer)
 	vim.g.loaded_netrw = 1
 	vim.g.loaded_netrwPlugin = 1

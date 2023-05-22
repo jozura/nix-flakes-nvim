@@ -6,7 +6,7 @@ function keymaps()
 				name = "+file",
 				f = { "<cmd>Telescope find_files<cr>", "Find File" },
 				p = { "<cmd>Telescope git_files<cr>", "Find Git Project File" },
-				g = { "<cmd>Telescope live_grep<cr>", "Search In Files" },
+				s = { "<cmd>Telescope live_grep<cr>", "Search In Files" },
 				v = { "<cmd>Telescope help_tags<cr>", "Search In Vim Help Files" },
 				r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 			},
