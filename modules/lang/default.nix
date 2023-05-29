@@ -13,9 +13,11 @@
     # Snippets (used by Autocompletion)
     luasnip
     cmp_luasnip
+    conjure
   ];
   optPackages = [];
   additionalDependencies = [
+	pkgs.babashka
   	pkgs.clojure-lsp
 	pkgs.nil
 	pkgs.sumneko-lua-language-server

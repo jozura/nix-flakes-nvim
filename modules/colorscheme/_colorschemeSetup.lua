@@ -24,8 +24,8 @@ function setup()
         theme = "wave",
         -- map the value of 'background' option to a theme
         background = {
-            dark = "wave", -- try "dragon" !
-            light = "dragon"
+            dark = "dragon", -- try "dragon" !
+            light = "lotus"
         },
     })
 
