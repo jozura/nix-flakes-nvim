@@ -9,6 +9,8 @@ function keymaps()
 	vim.keymap.set("n", "<S-l>", ":bn<CR>", {})
 	-- Switch to next buffer and close previous one
 	vim.keymap.set("n", "<C-q>", ":bn<CR>:bd #<CR>")
+    -- Format and save
+	vim.keymap.set("n", "<C-s>", ":lua vim.lsp.buf.format()<CR>:w<CR>")
 end
 
 return keymaps
