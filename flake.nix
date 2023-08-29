@@ -31,8 +31,8 @@
           runtimeInputs = [myNeovim] ++ moduleConfig.additionalDependencies;
           text = ''
             export ENABLED_MODULES="${enabledModules}"
-                   export LUA_PATH="${moduleConfig.luaPath};"
-                   nvim
+            export LUA_PATH="${moduleConfig.luaPath};"
+            nvim "$@"
           '';
         };
         apps.default = {
