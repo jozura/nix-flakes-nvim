@@ -27,15 +27,15 @@ function keymaps()
 				n = { vim.diagnostic.goto_next, "Next Problem" },
 				p = { vim.diagnostic.goto_prev, "Prev Problem" },
 				t = { vim.lsp.buf.type_definition, "Type Definition" },
-				d = { vim.lsp.buf.declaration, "Declaration" },
+				d = { vim.lsp.buf.definition, "Definition" },
 				s = { vim.lsp.buf.rename, "Set New Name" },
 			},
 			t = {
 				name = "+telescope-lsp",
 				d = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
 				i = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
-				r = { "<cmd>Telescope lsp_references", "References" },
-				e = { "<cmd>Telescope diagnostics", "Diagnostics" },
+				r = { "<cmd>Telescope lsp_references<cr>", "References" },
+				e = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
 			}
 		},
 	})

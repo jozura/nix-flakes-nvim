@@ -2,17 +2,15 @@
   startPackages = with pkgs.vimPlugins; [
     (nvim-treesitter
       .withPlugins
-      (ps: with ps; [nix lua clojure javascript typescript]))
+      (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex]))
     nvim-lspconfig
     # Autocompletion
+    nvim-cmp
     cmp-nvim-lsp
     cmp-buffer
     cmp-path
     cmp-cmdline
-    nvim-cmp
-    # Snippets (used by Autocompletion)
-    luasnip
-    cmp_luasnip
+    # Epic clojure plugin
     conjure
   ];
   optPackages = [];
