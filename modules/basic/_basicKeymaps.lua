@@ -7,7 +7,7 @@ function keymaps()
 	-- Cycle between buffers
 	vim.keymap.set("n", "<S-h>", ":bp<CR>", {})
 	vim.keymap.set("n", "<S-l>", ":bn<CR>", {})
-	-- Switch to next buffer and close the previous one
+	-- Switch to next buffer and close previous one
 	vim.keymap.set("n", "<C-q>", ":bn<CR>:bd #<CR>")
 end
 
