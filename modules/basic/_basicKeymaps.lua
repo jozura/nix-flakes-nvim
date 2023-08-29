@@ -9,8 +9,6 @@ function keymaps()
 	vim.keymap.set("n", "<S-l>", ":bn<CR>", {})
 	-- Switch to next buffer and close the previous one
 	vim.keymap.set("n", "<C-q>", ":bn<CR>:bd #<CR>")
-	-- Launch the brave browser, (obviously need to have brave installed)
-	vim.keymap.set("n", "<F10>", ":! nohup brave &> /dev/null &<CR>", {})
 end
 
 return keymaps
