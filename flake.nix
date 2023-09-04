@@ -27,7 +27,7 @@
         enabledModules = builtins.concatStringsSep " " moduleConfig.enabledModules;
       in rec {
         packages.default = pkgs.writeShellApplication {
-          name = "vim";
+          name = "myvim";
           runtimeInputs = [myNeovim] ++ moduleConfig.additionalDependencies;
           text = ''
             export ENABLED_MODULES="${enabledModules}"
