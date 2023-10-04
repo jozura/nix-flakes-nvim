@@ -18,23 +18,6 @@
         "type": "github"
       }
     },
-    "indent-blankline": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1696421174,
-        "narHash": "sha256-IjSRT7UDZtZY4a9hkb0ZjU3hJDngzO9k5J5IWt+wacs=",
-        "owner": "lukas-reineke",
-        "repo": "indent-blankline.nvim",
-        "rev": "da789082a43e2bb8930c7be0e265ce37768394d8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lukas-reineke",
-        "ref": "master",
-        "repo": "indent-blankline.nvim",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1684585791,
@@ -54,9 +37,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "indent-blankline": "indent-blankline",
-        "nixpkgs": "nixpkgs",
-        "vim-illuminate": "vim-illuminate"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
@@ -71,23 +52,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "vim-illuminate": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1695749213,
-        "narHash": "sha256-yzpVbp2YGEmBTTNw4fOJTftp+lisc3CnRBGWNspUazU=",
-        "owner": "RRethy",
-        "repo": "vim-illuminate",
-        "rev": "1b5d70332a51a1de05f281069851865a2bb1e6d7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RRethy",
-        "ref": "master",
-        "repo": "vim-illuminate",
         "type": "github"
       }
     }
