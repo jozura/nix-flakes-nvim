@@ -42,8 +42,8 @@ function M.setup()
 	-- vim.opt.cursorline = true
 	-- Enable line numbers
 	vim.wo.relativenumber = true
-	-- Set a line length guide on column 80
-	vim.opt.colorcolumn = "80"
+	-- Set a line length guide on column 110
+	vim.opt.colorcolumn = "110"
 	-- When doing a vertical split, put the new buffer on the right side
 	vim.opt.splitright = true
 	-- Disable netrw (the default file explorer)

@@ -3,10 +3,9 @@
   ...
 }:
 let
-  modulesPath = ./.;
   modulesDerivation = pkgs.stdenv.mkDerivation {
     name = "lua-config-nvim";
-    src = modulesPath;
+    src = ./.;
     installPhase = ''
       mkdir -p $out/lua/
       mv ./init.lua $out/init.lua
@@ -14,7 +13,6 @@ let
     '';
   };
 in {
-  # Sets ./init.lua as the entrypoint to my neovim config
   customRC = "
     set rtp+=${modulesDerivation}
     luafile ${modulesDerivation}/init.lua

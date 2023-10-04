@@ -20,7 +20,7 @@ function M.setup()
             truncate_names = false,
         }
     }
-    
+
     setKeybindings()
 end
 
