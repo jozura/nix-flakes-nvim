@@ -21,7 +21,7 @@ in {
   # Sets ./init.lua as the entrypoint to my neovim config
   customRC = "
     echo \"${modulesDerivation}\"
-    set rtp+=${modulesDerivation}/
+    set rtp+=${modulesDerivation}
     luafile ${modulesDerivation}/init.lua
   ";
 }
