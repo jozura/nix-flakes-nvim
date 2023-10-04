@@ -13,27 +13,66 @@
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
-        startPkgs = with pkgs.vimPlugins; [
-          vim-illuminate 
+        pkgs = nixpkgs.legacyPackages.${system};
+        startPlugins = with pkgs.vimPlugins; [
+          # For setting keybindings
+          which-key-nvim
+          # Status bar
+          lualine-nvim
+          lualine-lsp-progress
+          # Illuminate word under cursor
+          vim-illuminate
+          # Display git changes on the left side of the window, also git blame etc.
           gitsigns-nvim 
+          # Auto-complete parenthesis
           nvim-autopairs
+          # Navigation (find files, find references, etc..)
           telescope-nvim
-          vim-sexp
+          # Display listing of open buffers
+          bufferline-nvim
+          # Colorscheme
+          kanagawa-nvim
+          # File explorer and icons for it
+          nvim-tree-lua 
+          nvim-web-devicons
+          # Syntax highlighting
+          (nvim-treesitter
+            .withPlugins
+            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex]))
+          # Configure LSPs
+          nvim-lspconfig
+          # Autocompletion...
+          nvim-cmp
+          # From lsp
+          cmp-nvim-lsp
+          # From the current buffer
+          cmp-buffer
+          # For file paths
+          cmp-path
+          # For vim command line
+          cmp-cmdline
         ];
-        optPkgs = with pkgs.vimPlugins; [
+        optPlugins = with pkgs.vimPlugins; [
+          # S-expression editing
           vim-sexp
+          # Nice repl support for lisps
+          conjure
         ];
         additionalDeps = with pkgs; [
+          # Required by telescope plugin for fuzzy finding
           ripgrep
+          # Language servers
+          clojure-lsp
+        	nil
+        	sumneko-lua-language-server
+        	nodePackages.typescript-language-server
         ];
-
-        pkgs = nixpkgs.legacyPackages.${system};
         moduleConfig = (import ./modules) pkgs;
         myNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             packages.myVimPackage = {
-              start = moduleConfig.start ++ startPkgs;
-              opt = moduleConfig.opt ++ optPkgs;
+              start = startPlugins;
+              opt = optPlugins;
             };
             customRC = moduleConfig.customRC;
           };
@@ -42,7 +81,7 @@
       in {
         packages.default = pkgs.writeShellApplication {
           name = "myvim";
-          runtimeInputs = [myNeovim] ++ moduleConfig.additionalDependencies ++ additionalDeps;
+          runtimeInputs = [myNeovim] ++ additionalDeps;
           text = ''
             export ENABLED_MODULES="${enabledModules}"
             export LUA_PATH="${moduleConfig.luaPath};"
