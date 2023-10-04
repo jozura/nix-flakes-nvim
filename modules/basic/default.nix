@@ -1,7 +1,5 @@
 {pkgs, ...}: {
   startPackages = with pkgs.vimPlugins; [
-    # Show indention lines
-    indent-blankline-nvim
     # Automatically adjust indents
     # vim-sleuth
     # Autocomplete parens etc.

@@ -34,6 +34,8 @@ function setup()
 	vim.g.loaded_netrwPlugin = 1
 	-- Ignore case in searching
 	vim.opt.ignorecase = true
+    -- Dont wrap lines
+    vim.wo.wrap = false
 	-- Except when explicitly searching for capital content
 	vim.opt.smartcase = true
 	-- Create a backup when overwriting a file

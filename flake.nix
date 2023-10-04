@@ -4,21 +4,37 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    vim-illuminate = {
+      url = "github:RRethy/vim-illuminate/master";
+      flake = false;
+    };
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
+    vim-illuminate,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
+        startPkgs = map 
+          ({src, name}: pkgs.vimUtils.buildVimPlugin { inherit src; inherit name; })
+          [
+            {name = "vim-illuminate"; src = vim-illuminate;}
+          ];
+        optPkgs = map 
+          ({src, name}: pkgs.vimUtils.buildVimPlugin { inherit src; inherit name; })
+          [
+          ];
+
         pkgs = nixpkgs.legacyPackages.${system};
         moduleConfig = (import ./modules) pkgs;
         myNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             packages.myVimPackage = {
-              start = moduleConfig.start;
+              start = moduleConfig.start ++ [startPkgs] ++ [optPkgs];
               opt = moduleConfig.opt;
             };
             customRC = moduleConfig.customRC;
