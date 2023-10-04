@@ -5,12 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     clojure-lsp.url = "github:clojure-lsp/clojure-lsp";
+    nil.url = "github:oxalica/nil";
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
     clojure-lsp,
+    nil,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
@@ -63,8 +65,7 @@
         additionalDeps = with pkgs; [
           # Required by telescope plugin for fuzzy finding
           ripgrep
-          # Language servers
-        	nil
+          # Language servers (that have no flakes)
           lua-language-server
         	nodePackages.typescript-language-server
         ];
@@ -81,7 +82,7 @@
       in {
         packages.default = pkgs.writeShellApplication {
           name = "myvim";
-          runtimeInputs = [myNeovim clojure-lsp] ++ additionalDeps;
+          runtimeInputs = [myNeovim clojure-lsp nil] ++ additionalDeps;
           text = ''
             nvim "$@"
           '';
