@@ -13,8 +13,9 @@ with pkgs; let
     name = "lua-config-nvim";
     src = modulesPath;
     installPhase = ''
-      mkdir -p $out/
-      cp -r ./* $out/
+      mkdir -p $out/lua/
+      mv ./init.lua $out/init.lua
+      cp -r ./* $out/lua/
     '';
   };
 in {
