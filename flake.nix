@@ -67,7 +67,7 @@
         	sumneko-lua-language-server
         	nodePackages.typescript-language-server
         ];
-        moduleConfig = (import ./modules) pkgs;
+        moduleConfig = (import ./lua) pkgs;
         myNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             packages.myVimPackage = {
@@ -77,14 +77,11 @@
             customRC = moduleConfig.customRC;
           };
         };
-        enabledModules = builtins.concatStringsSep " " moduleConfig.enabledModules;
       in {
         packages.default = pkgs.writeShellApplication {
           name = "myvim";
           runtimeInputs = [myNeovim] ++ additionalDeps;
           text = ''
-            export ENABLED_MODULES="${enabledModules}"
-            export LUA_PATH="${moduleConfig.luaPath};"
             nvim "$@"
           '';
         };
