@@ -51,8 +51,6 @@
           cmp-path
           # For vim command line
           cmp-cmdline
-        ];
-        optPlugins = with pkgs.vimPlugins; [
           # S-expression editing
           vim-sexp
           # Nice repl support for lisps
@@ -67,14 +65,14 @@
         	sumneko-lua-language-server
         	nodePackages.typescript-language-server
         ];
-        moduleConfig = (import ./lua) pkgs;
+        luaConfig = (import ./lua) pkgs;
         myNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             packages.myVimPackage = {
               start = startPlugins;
-              opt = optPlugins;
+              opt = [];
             };
-            customRC = moduleConfig.customRC;
+            customRC = luaConfig.customRC;
           };
         };
       in {
