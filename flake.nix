@@ -24,10 +24,10 @@
           vim-illuminate
           # Display git changes on the left side of the window, also git blame etc.
           gitsigns-nvim 
-          # Auto-complete parenthesis
-          nvim-autopairs
           # Navigation (find files, find references, etc..)
           telescope-nvim
+          # Navigation (save files to a quick jump list)
+          harpoon
           # Display listing of open buffers
           bufferline-nvim
           # Colorscheme
@@ -51,6 +51,8 @@
           cmp-path
           # For vim command line
           cmp-cmdline
+          # Snippets
+          luasnip
           # S-expression editing
           vim-sexp
           # Nice repl support for lisps
@@ -62,7 +64,7 @@
           # Language servers
           clojure-lsp
         	nil
-        	sumneko-lua-language-server
+          lua-language-server
         	nodePackages.typescript-language-server
         ];
         luaConfig = (import ./lua) pkgs;

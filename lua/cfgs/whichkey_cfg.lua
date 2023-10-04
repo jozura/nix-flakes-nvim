@@ -15,9 +15,15 @@ function M.setup()
 			g = {
 				name = "+git",
 				s = { "<cmd>Telescope git_status<cr>", "Git Status" },
-				b = { "<cmd>Telescope git_branches<cr>", "Git Branches" },
+				b = { "<cmd>Gitsigns blame_line<cr>", "Git Blame" },
+				d = { "<cmd>Gitsigns diffthis<cr>", "Git Diff" },
 				c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
 				w = { "<cmd>Telescope git stash<cr>", "Show Git Stash" },
+			},
+			s = {
+				name = "+gitsigns",
+				h = { "<cmd>Gitsigns toggle_linehl<cr>", "Toggle line hl" },
+				b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle current line blame" },
 			},
 			l = {
 				name = "+lsp",
@@ -33,12 +39,25 @@ function M.setup()
 				s = { vim.lsp.buf.rename, "Set New Name" },
 			},
 			t = {
-				name = "+telescope-lsp",
+				name = "+telescope",
 				d = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
 				i = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
 				r = { "<cmd>Telescope lsp_references<cr>", "References" },
 				e = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-			}
+				h = { "<cmd>Telescope harpoon marks<cr>", "Harpoon" },
+			},
+            h = {
+                name = "+harpoon",
+                m = { "<cmd>lua require(\"harpoon.mark\").add_file()<cr>", "Mark file" },
+                n = { "<cmd>lua require(\"harpoon.ui\").nav_next()<cr>", "Nav next" },
+                p = { "<cmd>lua require(\"harpoon.ui\").nav_prev()<cr>", "Nav prev" },
+                l = { "<cmd>lua require(\"harpoon.ui\").toggle_quick_menu()<cr>", "Nav prev" },
+                ["1"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(1)<cr>", "Nav 1" },
+                ["2"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(2)<cr>", "Nav 2" },
+                ["3"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(3)<cr>", "Nav 3" },
+                ["4"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(4)<cr>", "Nav 4" },
+                ["5"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(5)<cr>", "Nav 5" },
+            }
 		},
 	})
 end
