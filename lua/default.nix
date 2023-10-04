@@ -19,5 +19,9 @@ with pkgs; let
   };
 in {
   # Sets ./init.lua as the entrypoint to my neovim config
-  customRC = "luafile ${modulesDerivation}/init.lua";
+  customRC = "
+    echo \"${modulesDerivation}\"
+    set rtp+=${modulesDerivation}/
+    luafile ${modulesDerivation}/init.lua
+  ";
 }
