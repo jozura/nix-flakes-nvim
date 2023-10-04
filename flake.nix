@@ -25,7 +25,7 @@
           };
         };
         enabledModules = builtins.concatStringsSep " " moduleConfig.enabledModules;
-      in rec {
+      in {
         packages.default = pkgs.writeShellApplication {
           name = "myvim";
           runtimeInputs = [myNeovim] ++ moduleConfig.additionalDependencies;
@@ -34,10 +34,6 @@
             export LUA_PATH="${moduleConfig.luaPath};"
             nvim "$@"
           '';
-        };
-        apps.default = {
-          type = "app";
-          program = "${packages.default}/bin/vim";
         };
       }
     );
