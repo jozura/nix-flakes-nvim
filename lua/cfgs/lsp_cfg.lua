@@ -1,4 +1,7 @@
-function setup(autoCompleteCapabilities)
+local M = {}
+
+function M.setup()
+    local autoCompleteCapabilities = require('cmp_nvim_lsp').default_capabilities()
 	local lspconfig = require("lspconfig")
 	lspconfig.clojure_lsp.setup { capabilities = autoCompleteCapabilities }
 	lspconfig.tsserver.setup { capabilities = autoCompleteCapabilities }
@@ -26,4 +29,4 @@ function setup(autoCompleteCapabilities)
 	}
 end
 
-return setup
+return M

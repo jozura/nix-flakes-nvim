@@ -1,4 +1,11 @@
-local myKeymaps = require("_explorerKeymaps")
+local M = {}
+
+local function setKeybindings()
+	-- Toggle the tree
+	vim.keymap.set('n', '<F6>', ':NvimTreeToggle<CR>', {})
+	-- Find the currently focused file in the tree
+	vim.keymap.set('n', '<F5>', ':NvimTreeFindFile<CR>', {})
+end
 
 local function myOnAttach(bufnr)
     local api = require('nvim-tree.api')
@@ -12,8 +19,29 @@ local function myOnAttach(bufnr)
             nowait = true
         }
     end
-    -- Set the keys defined in my keymap
-    myKeymaps.mapKeysOnAttach(api, opts)
+	-- Default bindings that I frequently use. Specified here
+	-- in case I ever wish to migrate to a different file explorer
+	vim.keymap.set('n', '<CR>', api.node.open.edit,
+		opts('Open'))
+	vim.keymap.set('n', 'a', api.fs.create,
+		opts('Create'))
+	vim.keymap.set('n', 'd', api.fs.remove,
+		opts('Delete'))
+	vim.keymap.set('n', 'r', api.fs.rename,
+		opts('Rename'))
+	vim.keymap.set('n', 'x', api.fs.cut,
+		opts('Cut'))
+	vim.keymap.set('n', 'c', api.fs.copy.node,
+		opts('Copy'))
+	vim.keymap.set('n', 'p', api.fs.paste,
+		opts('Paste'))
+	vim.keymap.set('n', '<C-v>', api.node.open.vertical,
+		opts('Open: Vertical Split'))
+	-- Custom mappings
+	vim.keymap.set('n', '<C-x>', api.node.open.horizontal,
+		opts('Open: Horizontal Split'))
+	vim.keymap.set('n', '<F7>', api.tree.change_root_to_node,
+		opts('CD'))
     -- BEGIN_DEFAULT_ON_ATTACH
     vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,
         opts('Open: In Place'))
@@ -102,7 +130,7 @@ local function myOnAttach(bufnr)
     -- END_DEFAULT_ON_ATTACH
 end
 
-function setup()
+function M.setup()
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
         view = {
@@ -116,6 +144,8 @@ function setup()
             enable = true,
         },
     })
+
+    setKeybindings()
 end
 
-return setup
+return M

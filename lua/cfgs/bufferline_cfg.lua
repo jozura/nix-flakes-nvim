@@ -1,4 +1,6 @@
-function setup()
+local M = {}
+
+local function setKeybindings()
 	vim.keymap.set("n", "<leader>1", function() require("bufferline").go_to(1, true) end, {})
 	vim.keymap.set("n", "<leader>2", function() require("bufferline").go_to(2, true) end, {})
 	vim.keymap.set("n", "<leader>3", function() require("bufferline").go_to(3, true) end, {})
@@ -11,4 +13,16 @@ function setup()
 	vim.keymap.set("n", "<leader>$", function() require("bufferline").go_to(-1, true) end, {})
 end
 
-return setup
+function M.setup()
+    require("bufferline").setup {
+        options = {
+            numbers = "ordinal",
+            truncate_names = false,
+        }
+    }
+    
+    setKeybindings()
+end
+
+
+return M

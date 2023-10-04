@@ -1,4 +1,6 @@
-function keymaps()
+local M = {}
+
+function M.setup()
 	local wk = require("which-key")
 	wk.register({
 		["<leader>"] = {
@@ -41,4 +43,4 @@ function keymaps()
 	})
 end
 
-return keymaps
+return M

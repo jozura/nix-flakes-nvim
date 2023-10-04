@@ -1,4 +1,6 @@
-function setup()
+local M = {}
+
+function M.setup()
     -- Kanagawa colorscheme --
     -- Default options:
     require('kanagawa').setup({
@@ -33,4 +35,4 @@ function setup()
     vim.cmd("colorscheme kanagawa")
 end
 
-return setup
+return M

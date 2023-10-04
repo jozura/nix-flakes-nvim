@@ -1,30 +1,21 @@
--- print("Enabled modules:")
+local basic = require("basic_cfg")
+local nvimTree = require("nvim_tree_cfg")
+local gitsigns = require("gitsigns_cfg")
+local bufferline = require("bufferline_cfg")
+local colorscheme = require("colorscheme_cfg")
+local lualine = require("lualine_cfg")
+local treesitter = require("treesitter_cfg")
+local lsp = require("lsp_cfg")
+local nvimCmp = require("nvim_cmp_cfg")
+local whichkey = require("whichkey_cfg")
 
---local function getCwd()
---    local pfile = io.popen('pwd')
---    if (pfile == nil) then
---        error("Could not print working directory with 'pwd'")
---    else
---        return pfile:read()
---    end
---end
---
---local function getConfigs()
---    local i, t = 0, {}
---    local pfile = io.popen('ls -a "'..getCwd()..'"')
---    if (pfile == nil) then
---        error("Could not list directory contents.")
---    else
---        for filename in pfile:lines() do
---            i = i + 1
---            t[i] = filename
---        end
---        pfile:close()
---        return t
---    end
---end
--- main.lua
-
-local myModule = require("my_module")  -- Load the module
-
-myModule.say_hello()  -- Call a function from the module
+basic.setup()
+nvimTree.setup()
+gitsigns.setup()
+bufferline.setup()
+colorscheme.setup()
+lualine.setup()
+treesitter.setup()
+lsp.setup()
+nvimCmp.setup()
+whichkey.setup()
