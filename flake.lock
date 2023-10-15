@@ -5,7 +5,7 @@
         "devshell": "devshell",
         "nix-fetcher-data": "nix-fetcher-data",
         "nixpkgs": [
-          "clojure-lsp",
+          "clojure-lsp-flake",
           "nixpkgs"
         ]
       },
@@ -23,18 +23,18 @@
         "type": "github"
       }
     },
-    "clojure-lsp": {
+    "clojure-lsp-flake": {
       "inputs": {
         "clj-nix": "clj-nix",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1695588961,
-        "narHash": "sha256-2eLw1brcTBbxGYgaV/1TSf0yhG9JwslEsOvBZnYsa9M=",
+        "lastModified": 1696854743,
+        "narHash": "sha256-0pWAajIm4mwyHJH2KdT96uPO5GWqWWUVXjdko1nskX8=",
         "owner": "clojure-lsp",
         "repo": "clojure-lsp",
-        "rev": "dae0546ab14e44def946e160c504a7133baeae0f",
+        "rev": "c6b024940e65e86464fcb0f9be11aeee47a2440b",
         "type": "github"
       },
       "original": {
@@ -46,7 +46,7 @@
     "devshell": {
       "inputs": {
         "nixpkgs": [
-          "clojure-lsp",
+          "clojure-lsp-flake",
           "clj-nix",
           "nixpkgs"
         ],
@@ -180,7 +180,7 @@
         "flake-part": "flake-part",
         "flake-parts": "flake-parts",
         "nixpkgs": [
-          "clojure-lsp",
+          "clojure-lsp-flake",
           "clj-nix",
           "nixpkgs"
         ]
@@ -285,7 +285,7 @@
     },
     "root": {
       "inputs": {
-        "clojure-lsp": "clojure-lsp",
+        "clojure-lsp-flake": "clojure-lsp-flake",
         "flake-utils": "flake-utils_2",
         "nil": "nil",
         "nixpkgs": "nixpkgs_3"
