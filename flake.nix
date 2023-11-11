@@ -5,20 +5,21 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     clojure-lsp-flake.url = "github:clojure-lsp/clojure-lsp";
-    nil.url = "github:oxalica/nil";
+    nil-flake.url = "github:oxalica/nil";
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
     clojure-lsp-flake,
-    nil,
+    nil-flake,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         clojure-lsp = clojure-lsp-flake.packages.${system}.clojure-lsp;
+        nil = nil-flake.packages.${system}.nil;
         startPlugins = with pkgs.vimPlugins; [
           # For setting keybindings
           which-key-nvim
