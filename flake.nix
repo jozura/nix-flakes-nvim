@@ -80,16 +80,14 @@
             customRC = luaConfig.customRC;
           };
         };
-        myVim = pkgs.writeShellApplication {
+      in {
+        packages.default = pkgs.writeShellApplication {
           name = "myvim";
           runtimeInputs = [myNeovim clojure-lsp nil] ++ additionalDeps;
           text = ''
             nvim "$@"
           '';
         };
-      in {
-        packages.default = myVim;
-        nixosModules.default = myVim;
       }
     );
 }
