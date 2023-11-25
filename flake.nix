@@ -44,7 +44,7 @@
           # Syntax highlighting
           (nvim-treesitter
             .withPlugins
-            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex]))
+            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex glsl]))
           # Configure LSPs
           nvim-lspconfig
           # Autocompletion...
