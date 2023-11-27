@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     clojure-lsp-flake.url = "github:clojure-lsp/clojure-lsp";
+    wgsl-analyzer-flake.url = "github:wgsl-analyzer/wgsl-analyzer";
     nil-flake.url = "github:oxalica/nil";
   };
 
@@ -12,6 +13,7 @@
     nixpkgs,
     flake-utils,
     clojure-lsp-flake,
+    wgsl-analyzer-flake,
     nil-flake,
     ...
   }:
@@ -19,6 +21,7 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         clojure-lsp = clojure-lsp-flake.packages.${system}.clojure-lsp;
+        wgsl-analyzer = wgsl-analyzer-flake.packages.${system}.default;
         nil = nil-flake.packages.${system}.nil;
         startPlugins = with pkgs.vimPlugins; [
           # For setting keybindings
@@ -44,7 +47,7 @@
           # Syntax highlighting
           (nvim-treesitter
             .withPlugins
-            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex glsl]))
+            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex glsl wgsl]))
           # Configure LSPs
           nvim-lspconfig
           # Autocompletion...
@@ -84,7 +87,12 @@
       in {
         packages.default = pkgs.writeShellApplication {
           name = "myvim";
-          runtimeInputs = [myNeovim clojure-lsp nil] ++ additionalDeps;
+          runtimeInputs = [
+            myNeovim 
+            clojure-lsp 
+            nil 
+            wgsl-analyzer
+          ] ++ additionalDeps;
           text = ''
             nvim "$@"
           '';
