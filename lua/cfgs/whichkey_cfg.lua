@@ -61,7 +61,12 @@ function M.setup()
                 ["3"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(3)<cr>", "Nav 3" },
                 ["4"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(4)<cr>", "Nav 4" },
                 ["5"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(5)<cr>", "Nav 5" },
-            }
+            },
+             p = {
+                name = "definitioninsplit",
+                v = { "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Vertical" },
+                h = { "<cmd>belowright split | lua vim.lsp.buf.definition()<cr>", "Horizontal" },
+            },
 		},
 	})
 end
