@@ -64,7 +64,7 @@ function M.setup()
             },
              p = {
                 name = "definitioninsplit",
-                v = { "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Vertical" },
+                d = { "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Vertical" },
                 h = { "<cmd>belowright split | lua vim.lsp.buf.definition()<cr>", "Horizontal" },
             },
 		},
