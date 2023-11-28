@@ -66,8 +66,10 @@
           vim-sexp
           # Nice repl support for lisps
           conjure
-          # auto parenthesis
+          # Autoparenthesis
           nvim-autopairs
+          # Floating windows for references / definition
+          goto-preview
         ];
         additionalDeps = with pkgs; [
           # Required by telescope plugin for fuzzy finding

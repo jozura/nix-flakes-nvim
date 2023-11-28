@@ -61,7 +61,16 @@ function M.setup()
                 ["3"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(3)<cr>", "Nav 3" },
                 ["4"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(4)<cr>", "Nav 4" },
                 ["5"] = { "<cmd>lua require(\"harpoon.ui\").nav_file(5)<cr>", "Nav 5" },
-            }
+            },
+            p = {
+                name = "+preview",
+                d = { "<cmd>lua require(\"goto-preview\").goto_preview_definition()<cr>", "Definition" },
+                r = { "<cmd>lua require(\"goto-preview\").goto_preview_references()<cr>", "References" },
+                c = { "<cmd>lua require(\"goto-preview\").close_all_win()<cr>", "Close all windows" },
+                t = { "<cmd>lua require(\"goto-preview\").goto_preview_type_definition()<cr>", "Type" },
+                e = { "<cmd>lua require(\"goto-preview\").goto_preview_type_declaration()<cr>", "Declaration" },
+                i = { "<cmd>lua require(\"goto-preview\").goto_preview_implementation()<cr>", "Implementation" },
+            },
 		},
 	})
 end
