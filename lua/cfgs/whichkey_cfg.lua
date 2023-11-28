@@ -19,6 +19,10 @@ function M.setup()
 				d = { "<cmd>Gitsigns diffthis<cr>", "Git Diff" },
 				c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
 				w = { "<cmd>Telescope git stash<cr>", "Show Git Stash" },
+				a = { "<cmd>Gitsign stage_hunk<cr>", "Stage hunk" },
+				u = { "<cmd>Gitsign undo_stage_hunk<cr>", "Undo stage hunk" },
+				f = { "<cmd>Gitsign stage_buffer<cr>", "Stage buffer" },
+				h = { "<cmd>Gitsign toggle_linehl<cr>", "Toggle line highlight" },
 			},
 			s = {
 				name = "+gitsigns",
