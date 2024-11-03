@@ -47,7 +47,7 @@
           # Syntax highlighting
           (nvim-treesitter
             .withPlugins
-            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex glsl wgsl]))
+            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex glsl wgsl zig]))
           # Configure LSPs
           nvim-lspconfig
           # Autocompletion...
@@ -78,6 +78,7 @@
           # Language servers (that have no flakes)
           lua-language-server
         	nodePackages.typescript-language-server
+          zls
         ];
         luaConfig = (import ./lua) pkgs;
         alpineImage = pkgs.dockerTools.pullImage {

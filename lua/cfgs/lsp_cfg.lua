@@ -4,6 +4,7 @@ function M.setup()
     local autoCompleteCapabilities = require('cmp_nvim_lsp').default_capabilities()
     local lspconfig = require("lspconfig")
     lspconfig.clojure_lsp.setup { capabilities = autoCompleteCapabilities }
+    lspconfig.zls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.tsserver.setup { capabilities = autoCompleteCapabilities }
     lspconfig.nil_ls.setup { capabilities = autoCompleteCapabilities }
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
