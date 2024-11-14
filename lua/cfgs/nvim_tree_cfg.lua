@@ -9,6 +9,7 @@ end
 
 local function myOnAttach(bufnr)
     local api = require('nvim-tree.api')
+    local telescope = require('telescope.builtin')
 
     local function opts(desc)
         return {
@@ -42,6 +43,12 @@ local function myOnAttach(bufnr)
 		opts('Open: Horizontal Split'))
 	vim.keymap.set('n', '<F7>', api.tree.change_root_to_node,
 		opts('CD'))
+    vim.keymap.set('n', 'f', function(node)
+        api.fs.copy.absolute_path(node);
+        local node_path = vim.fn.getreg('+')
+        telescope.live_grep({search_dirs = {node_path} })
+    end,
+        opts('Find'))
     -- BEGIN_DEFAULT_ON_ATTACH
     vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,
         opts('Open: In Place'))
@@ -85,8 +92,7 @@ local function myOnAttach(bufnr)
         opts('Prev Diagnostic'))
     vim.keymap.set('n', 'F', api.live_filter.clear,
         opts('Clean Filter'))
-    vim.keymap.set('n', 'f', api.live_filter.start,
-        opts('Filter'))
+
     vim.keymap.set('n', 'g?', api.tree.toggle_help,
         opts('Help'))
     vim.keymap.set('n', 'gy', api.fs.copy.absolute_path,
