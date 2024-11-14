@@ -2,6 +2,10 @@ local M = {}
 
 function M.setup()
 	local wk = require("which-key")
+    -- local telescope = require("telescope.builtin")
+    -- local nvimtree = require('nvim-tree.api')
+    -- nvimtree.fs.copy.absolute_path()
+    -- telescope.live_grep()
 	wk.register({
 		["<leader>"] = {
 			f = {

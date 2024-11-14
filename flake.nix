@@ -2,7 +2,7 @@
   description = "My neovim configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
     clojure-lsp-flake.url = "github:clojure-lsp/clojure-lsp";
     wgsl-analyzer-flake.url = "github:wgsl-analyzer/wgsl-analyzer";
