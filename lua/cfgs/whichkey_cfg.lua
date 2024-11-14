@@ -65,6 +65,7 @@ function M.setup()
              p = {
                 name = "definitioninsplit",
                 d = { "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Vertical" },
+                t = { "<cmd>vsplit | lua vim.lsp.buf.type_definition()<cr>", "Type Def" },
                 h = { "<cmd>belowright split | lua vim.lsp.buf.definition()<cr>", "Horizontal" },
             },
 		},
