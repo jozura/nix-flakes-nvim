@@ -4,15 +4,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    clojure-lsp-flake.url = "github:clojure-lsp/clojure-lsp/2024.03.31-19.10.13";
-    wgsl-analyzer-flake.url = "github:wgsl-analyzer/wgsl-analyzer";
+    wgsl-analyzer-flake.url = "github:wgsl-analyzer/wgsl-analyzer/a54d6a959518319655c1645d1212747e3b065e8a";
     nil-flake.url = "github:oxalica/nil";
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
-    clojure-lsp-flake,
     wgsl-analyzer-flake,
     nil-flake,
     ...
@@ -20,7 +18,6 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
-        clojure-lsp = clojure-lsp-flake.packages.${system}.clojure-lsp;
         wgsl-analyzer = wgsl-analyzer-flake.packages.${system}.default;
         nil = nil-flake.packages.${system}.nil;
         startPlugins = with pkgs.vimPlugins; [
@@ -79,6 +76,7 @@
           lua-language-server
         	nodePackages.typescript-language-server
           zls
+          clojure-lsp
         ];
         luaConfig = (import ./lua) pkgs;
         alpineImage = pkgs.dockerTools.pullImage {
@@ -126,7 +124,6 @@
           name = "myvim";
           runtimeInputs = [
             myNeovim 
-            clojure-lsp 
             nil 
             wgsl-analyzer
           ] ++ additionalDeps;
