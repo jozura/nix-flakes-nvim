@@ -77,6 +77,7 @@
         	nodePackages.typescript-language-server
           zls
           clojure-lsp
+          haskellPackages.haskell-language-server
         ];
         luaConfig = (import ./lua) pkgs;
         alpineImage = pkgs.dockerTools.pullImage {
