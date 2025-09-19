@@ -5,6 +5,7 @@ function M.setup()
     local lspconfig = require("lspconfig")
     lspconfig.clojure_lsp.setup { capabilities = autoCompleteCapabilities }
     lspconfig.zls.setup { capabilities = autoCompleteCapabilities }
+    lspconfig.basedpyright.setup{ capabilities = autoCompleteCapabilities }
     lspconfig.ts_ls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.nil_ls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.hls.setup { capabilities = autoCompleteCapabilities }

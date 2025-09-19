@@ -74,6 +74,7 @@
           nix
           # Language servers (that have no flakes)
           lua-language-server
+          basedpyright
         	nodePackages.typescript-language-server
           zls
           clojure-lsp
