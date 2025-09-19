@@ -9,13 +9,6 @@ function M.setup()
     lspconfig.ts_ls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.nil_ls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.hls.setup { capabilities = autoCompleteCapabilities }
-    vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-        pattern = "*.wgsl",
-        callback = function()
-            vim.bo.filetype = "wgsl"
-        end,
-    })
-    lspconfig.wgsl_analyzer.setup { capabilities = autoCompleteCapabilities }
     lspconfig.lua_ls.setup {
         capabilities = autoCompleteCapabilities,
         settings = {

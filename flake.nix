@@ -4,21 +4,18 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    wgsl-analyzer-flake.url = "github:wgsl-analyzer/wgsl-analyzer/a54d6a959518319655c1645d1212747e3b065e8a";
     nil-flake.url = "github:oxalica/nil";
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
-    wgsl-analyzer-flake,
     nil-flake,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
-        wgsl-analyzer = wgsl-analyzer-flake.packages.${system}.default;
         nil = nil-flake.packages.${system}.nil;
         startPlugins = with pkgs.vimPlugins; [
           # For setting keybindings
@@ -97,7 +94,6 @@
           runtimeInputs = [
             myNeovim 
             nil 
-            wgsl-analyzer
           ] ++ additionalDeps;
           text = ''
             nvim "$@"
