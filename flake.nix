@@ -70,6 +70,8 @@
           # Required by nix language server (nil)
           nix
           # Language servers (that have no flakes)
+          tailwindcss_4
+          tailwindcss-language-server
           lua-language-server
           basedpyright
         	nodePackages.typescript-language-server
@@ -89,6 +91,12 @@
           };
         };
       in {
+        devShells.default = pkgs.mkShell {
+          packages = [additionalDeps];
+          shellHook = '' 
+            echo "Hello"
+          '';
+        };
         packages.default = pkgs.writeShellApplication {
           name = "myvim";
           runtimeInputs = [

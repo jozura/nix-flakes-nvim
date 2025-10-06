@@ -5,10 +5,37 @@ function M.setup()
     local lspconfig = require("lspconfig")
     lspconfig.clojure_lsp.setup { capabilities = autoCompleteCapabilities }
     lspconfig.zls.setup { capabilities = autoCompleteCapabilities }
-    lspconfig.basedpyright.setup{ capabilities = autoCompleteCapabilities }
+    lspconfig.basedpyright.setup { capabilities = autoCompleteCapabilities }
     lspconfig.ts_ls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.nil_ls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.hls.setup { capabilities = autoCompleteCapabilities }
+    lspconfig.tailwindcss.setup { settings = { tailwindCSS = {
+        validate = true,
+        lint = {
+            cssConflict = 'warning',
+            invalidApply = 'error',
+            invalidScreen = 'error',
+            invalidVariant = 'error',
+            invalidConfigPath = 'error',
+            invalidTailwindDirective = 'error',
+            recommendedVariantOrder = 'warning',
+        },
+        classAttributes = {
+            'class',
+            'className',
+            'class:list',
+            'classList',
+            'ngClass',
+        },
+        includeLanguages = {
+            eelixir = 'html-eex',
+            eruby = 'erb',
+            templ = 'html',
+            htmlangular = 'html',
+            clojure = 'html'
+        },
+
+    } } }
     lspconfig.lua_ls.setup {
         capabilities = autoCompleteCapabilities,
         settings = {
