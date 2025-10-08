@@ -29,8 +29,6 @@
           gitsigns-nvim 
           # Navigation (find files, find references, etc..)
           telescope-nvim
-          # Navigation (save files to a quick jump list)
-          harpoon
           # Display listing of open buffers
           bufferline-nvim
           # Colorscheme
