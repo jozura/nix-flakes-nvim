@@ -45,7 +45,7 @@ function M.setup()
     },
     { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action" },
     { "<leader>li", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Incoming calls" },
-    { "<leader>lu", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "Incoming calls" },
+    { "<leader>lu", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "Outgoing calls" },
     { "<leader>le", vim.diagnostic.open_float, desc = "Diagnostics" },
     { "<leader>lo", vim.lsp.buf.hover,  desc = "Hover" },
     { "<leader>ln", function() vim.diagnostic.jump({count=1, float=true}) end, desc = "Next problem" },
