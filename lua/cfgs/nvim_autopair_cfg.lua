@@ -5,7 +5,7 @@ function M.setup()
     local Rule = require('nvim-autopairs.rule')
     npairs.setup({
         check_ts = true,
-        disable_filetype = { "TelescopePrompt", "spectre_panel", "clj", "cljs", "cljc" },
+        disable_filetype = { "TelescopePrompt", "spectre_panel", "clj", "cljs", "cljc", "clojure" },
     })
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')
     local cmp = require('cmp')
