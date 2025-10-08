@@ -19,9 +19,10 @@ function M.setup()
     { "<leader>ga", "<cmd>Gitsign stage_hunk<cr>", desc = "Stage hunk" },
     { "<leader>gb", "<cmd>Gitsigns blame_line<cr>", desc = "Git Blame" },
     { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Git commits" },
-    -- gp and gn are reserved :(
+    { "<leader>g", group = "hunks" },
     { "<leader>hn", "<cmd>Gitsigns next_hunk<cr>", desc = "Next hunk" },
     { "<leader>hp", "<cmd>Gitsigns prev_hunk<cr>", desc = "Prev hunk" },
+    { "<leader>hr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Prev hunk" },
     { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Git Diff" },
     { "<leader>gf", "<cmd>Gitsign stage_buffer<cr>", desc = "Stage buffer" },
     { "<leader>gh", "<cmd>Gitsign toggle_linehl<cr>", desc = "Toggle line highlight" },
