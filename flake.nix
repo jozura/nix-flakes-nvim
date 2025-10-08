@@ -29,8 +29,6 @@
           gitsigns-nvim 
           # Navigation (find files, find references, etc..)
           telescope-nvim
-          # Display listing of open buffers
-          bufferline-nvim
           # Colorscheme
           kanagawa-nvim
           # File explorer and icons for it
