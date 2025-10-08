@@ -33,9 +33,20 @@ function M.setup()
     { "<leader>hm", '<cmd>lua require("harpoon.mark").add_file()<cr>', desc = "Mark file" },
     { "<leader>hn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', desc = "Nav next" },
     { "<leader>hp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', desc = "Nav prev" },
+    { "<leader>n", group = "namespace" },
+    { "<leader>nu", "<cmd>ConjureEval (in-ns 'user)<cr>", desc = "User ns" },
     { "<leader>l", group = "lsp" },
     { "<leader>lh", vim.lsp.buf.signature_help, desc = "Signature" },
-    { "<leader>lf", vim.lsp.buf.format, desc = "Format" },
+    { "<leader>lf", vim.lsp.buf.format, desc = "Format", mode = "n" },
+    { "<leader>lf", function()
+                      vim.lsp.buf.format({
+                        range = {
+                          ["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+                          ["end"]   = vim.api.nvim_buf_get_mark(0, ">"),
+                        },
+                      })
+                    end, desc = "Format selection (LSP)", mode = "v"
+    },
     { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action" },
     { "<leader>le", vim.diagnostic.open_float, desc = "Diagnostics" },
     { "<leader>lo", vim.lsp.buf.hover,  desc = "Hover" },
@@ -48,6 +59,9 @@ function M.setup()
     { "<leader>pd", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", desc = "Vertical" },
     { "<leader>ph", "<cmd>belowright split | lua vim.lsp.buf.definition()<cr>", desc = "Horizontal" },
     { "<leader>pt", "<cmd>vsplit | lua vim.lsp.buf.type_definition()<cr>", desc = "Type Def" },
+    { "<leader>r",  group = "reloaded-workflow" },
+    { "<leader>rr", "<cmd>ConjureEval (do (in-ns 'user) (reset-reload))<cr>", desc = "Reset reload" },
+    { "<leader>re", "<cmd>ConjureEval (do (in-ns 'user) (reset))<cr>", desc = "Reset" },
     { "<leader>s", group = "gitsigns" },
     { "<leader>sb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle current line blame" },
     { "<leader>sh", "<cmd>Gitsigns toggle_linehl<cr>", desc = "Toggle line hl" },
