@@ -7,6 +7,8 @@ function M.setup()
     -- nvimtree.fs.copy.absolute_path()
     -- telescope.live_grep()
 	wk.add({
+    { "<leader>c", group = "code action" },
+    { "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>"},
     { "<leader>f", group = "file" },
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
     { "<leader>fp", "<cmd>Telescope git_files<cr>", desc = "Find Git Project File" },
