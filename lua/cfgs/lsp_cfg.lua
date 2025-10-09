@@ -3,7 +3,14 @@ local M = {}
 function M.setup()
     local autoCompleteCapabilities = require('cmp_nvim_lsp').default_capabilities()
     local lspconfig = require("lspconfig")
-    lspconfig.clojure_lsp.setup { capabilities = autoCompleteCapabilities }
+    lspconfig.clojure_lsp.setup {
+        capabilities = (function()
+            local capabilities = autoCompleteCapabilities
+            capabilities.experimental = capabilities.experimental or {}
+            capabilities.experimental.testTree = true
+            return capabilities
+        end)(),
+    }
     lspconfig.zls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.basedpyright.setup { capabilities = autoCompleteCapabilities }
     lspconfig.ts_ls.setup { capabilities = autoCompleteCapabilities }
