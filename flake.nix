@@ -56,6 +56,8 @@
           vim-sexp
           # Nice repl support for lisps
           conjure
+          # Show marks
+          marks-nvim
           # auto parenthesis
           nvim-autopairs
         ];
