@@ -17,6 +17,15 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         nil = nil-flake.packages.${system}.nil;
+        clojure-test-tree-nvim = pkgs.vimUtils.buildVimPlugin {
+          name = "clojure-test-tree-nvim";
+          src = pkgs.fetchFromGitHub {
+            owner = "jozura";
+            repo = "clojure-test-tree.nvim";
+            rev = "main";
+            sha256 = "sha256-Sw2sO0o55b8BZsDIrZPj9pztrJnh7bHf52k8RSMWyz8=";
+          };
+        };
         startPlugins = with pkgs.vimPlugins; [
           # For setting keybindings
           which-key-nvim
@@ -60,6 +69,7 @@
           marks-nvim
           # auto parenthesis
           nvim-autopairs
+          clojure-test-tree-nvim
         ];
         additionalDeps = with pkgs; [
           # Required by telescope plugin for fuzzy finding

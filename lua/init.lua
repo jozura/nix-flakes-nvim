@@ -21,3 +21,5 @@ nvimCmp.setup()
 whichkey.setup()
 nvimAutopair.setup()
 marks.setup()
+
+require('clojure-test-tree').setup()
