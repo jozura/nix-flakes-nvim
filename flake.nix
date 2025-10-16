@@ -36,6 +36,8 @@
           vim-illuminate
           # Display git changes on the left side of the window, also git blame etc.
           gitsigns-nvim 
+          # Another git plugin
+          vim-fugitive
           # Navigation (find files, find references, etc..)
           telescope-nvim
           # Colorscheme
