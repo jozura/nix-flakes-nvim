@@ -22,7 +22,6 @@ function M.setup()
 	vim.opt.smartindent = true
 	vim.opt.autoindent = true
 	vim.opt.tabstop = 4
-    vim.opt.exrc = true
 	vim.opt.shiftwidth = 4
 	vim.opt.expandtab = true
 	-- Use system clipboard
