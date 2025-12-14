@@ -13,8 +13,9 @@ function M.setup()
     }
     lspconfig.zls.setup {
         capabilities = autoCompleteCapabilities,
-        enable_build_on_save = true,
-        semantic_tokens = "partial",
+        settings = {
+            semantic_tokens = "partial",
+        }
     }
     lspconfig.basedpyright.setup { capabilities = autoCompleteCapabilities }
     lspconfig.ts_ls.setup { capabilities = autoCompleteCapabilities }
