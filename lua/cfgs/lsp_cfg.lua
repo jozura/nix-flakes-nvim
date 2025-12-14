@@ -11,7 +11,11 @@ function M.setup()
             return capabilities
         end)(),
     }
-    lspconfig.zls.setup { capabilities = autoCompleteCapabilities }
+    lspconfig.zls.setup {
+        capabilities = autoCompleteCapabilities,
+        enable_build_on_save = true,
+        semantic_tokens = "partial",
+    }
     lspconfig.basedpyright.setup { capabilities = autoCompleteCapabilities }
     lspconfig.ts_ls.setup { capabilities = autoCompleteCapabilities }
     lspconfig.nil_ls.setup { capabilities = autoCompleteCapabilities }

@@ -5,18 +5,21 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
     nil-flake.url = "github:oxalica/nil";
+    zls-flake.url = "github:zigtools/zls/0.15.1";
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
     nil-flake,
+    zls-flake,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         nil = nil-flake.packages.${system}.nil;
+        zls = zls-flake.packages.${system}.zls;
         clojure-test-tree-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "clojure-test-tree-nvim";
           src = pkgs.fetchFromGitHub {
@@ -85,7 +88,6 @@
           lua-language-server
           basedpyright
         	nodePackages.typescript-language-server
-          zls
           clojure-lsp
           haskellPackages.haskell-language-server
         ];
@@ -112,6 +114,7 @@
           runtimeInputs = [
             myNeovim 
             nil 
+            zls
           ] ++ additionalDeps;
           text = ''
             nvim "$@"
