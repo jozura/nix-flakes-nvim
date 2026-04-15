@@ -2,7 +2,7 @@
   description = "My neovim configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
     nil-flake.url = "github:oxalica/nil";
     zls-flake.url = "github:zigtools/zls/0.15.1";
@@ -82,9 +82,6 @@
           git
           # Required by nix language server (nil)
           nix
-          # Language servers (that have no flakes)
-          tailwindcss_4
-          tailwindcss-language-server
           lua-language-server
           basedpyright
         	nodePackages.typescript-language-server

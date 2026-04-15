@@ -2,65 +2,37 @@ local M = {}
 
 function M.setup()
     local autoCompleteCapabilities = require('cmp_nvim_lsp').default_capabilities()
-    local lspconfig = require("lspconfig")
-    lspconfig.clojure_lsp.setup {
+
+    -- Apply shared capabilities to all LSP servers
+    vim.lsp.config('*', {
+        capabilities = autoCompleteCapabilities,
+    })
+
+    vim.lsp.config('clojure_lsp', {
         capabilities = (function()
             local capabilities = autoCompleteCapabilities
             capabilities.experimental = capabilities.experimental or {}
             capabilities.experimental.testTree = true
             return capabilities
         end)(),
-    }
-    lspconfig.zls.setup {
-        capabilities = autoCompleteCapabilities,
+    })
+
+    vim.lsp.config('zls', {
         settings = {
             semantic_tokens = "partial",
-        }
-    }
-    lspconfig.basedpyright.setup { capabilities = autoCompleteCapabilities }
-    lspconfig.ts_ls.setup { capabilities = autoCompleteCapabilities }
-    lspconfig.nil_ls.setup { capabilities = autoCompleteCapabilities }
-    lspconfig.hls.setup { capabilities = autoCompleteCapabilities }
-    lspconfig.tailwindcss.setup { settings = { tailwindCSS = {
-        validate = true,
-        lint = {
-            cssConflict = 'warning',
-            invalidApply = 'error',
-            invalidScreen = 'error',
-            invalidVariant = 'error',
-            invalidConfigPath = 'error',
-            invalidTailwindDirective = 'error',
-            recommendedVariantOrder = 'warning',
         },
-        classAttributes = {
-            'class',
-            'className',
-            'class:list',
-            'classList',
-            'ngClass',
-        },
-        includeLanguages = {
-            eelixir = 'html-eex',
-            eruby = 'erb',
-            templ = 'html',
-            htmlangular = 'html',
-            clojure = 'html'
-        },
+    })
 
-    } } }
-    lspconfig.lua_ls.setup {
-        capabilities = autoCompleteCapabilities,
+    vim.lsp.config('lua_ls', {
         settings = {
             Lua = {
                 runtime = {
                     version = 'LuaJIT',
                 },
                 diagnostics = {
-                    -- Get the language server to recognize the `vim` global
                     globals = { 'vim' },
                 },
                 workspace = {
-                    -- Make the server aware of Neovim runtime files
                     library = vim.api.nvim_get_runtime_file("", true),
                 },
                 telemetry = {
@@ -68,7 +40,18 @@ function M.setup()
                 },
             },
         },
-    }
+    })
+
+    vim.lsp.enable({
+        'clojure_lsp',
+        'zls',
+        'basedpyright',
+        'ts_ls',
+        'nil_ls',
+        'hls',
+        'tailwindcss',
+        'lua_ls',
+    })
 end
 
 return M

@@ -6,13 +6,6 @@ local function setKeybindings()
 	vim.keymap.set("n", "<C-j>", "<C-w>j", {})
 	vim.keymap.set("n", "<C-k>", "<C-w>k", {})
 	vim.keymap.set("n", "<C-l>", "<C-w>l", {})
-	-- Cycle between buffers
-	vim.keymap.set("n", "<S-h>", ":bp<CR>", {})
-	vim.keymap.set("n", "<S-l>", ":bn<CR>", {})
-	-- Switch to next buffer and close previous one
-	vim.keymap.set("n", "<C-q>", ":bn<CR>:bd #<CR>")
-    -- Format and save
-	vim.keymap.set("n", "<C-s>", ":lua vim.lsp.buf.format()<CR>:w<CR>")
 end
 
 function M.setup()
@@ -41,6 +34,7 @@ function M.setup()
 	]])
 	-- vim.opt.cursorline = true
 	-- Enable line numbers
+	vim.wo.number         = true
 	vim.wo.relativenumber = true
 	-- Set a line length guide on column 110
 	vim.opt.colorcolumn = "110"
@@ -68,7 +62,7 @@ function M.setup()
 	-- Stop highlighting words after a search
 	vim.opt.hlsearch = false
 	-- Configure completion menu
-	vim.o.completeopt = "menuone,noselect"
+	vim.o.completeopt = "menu,menuone,noselect"
 	-- Always show a two character column next to the line number
 	vim.wo.signcolumn = "yes"
 
