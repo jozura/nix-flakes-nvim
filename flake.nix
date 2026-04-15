@@ -49,9 +49,7 @@
           nvim-tree-lua 
           nvim-web-devicons
           # Syntax highlighting
-          (nvim-treesitter
-            .withPlugins
-            (ps: with ps; [nix lua clojure javascript typescript css scss html json sql yaml python regex glsl wgsl zig]))
+          nvim-treesitter.withAllGrammars
           # Configure LSPs
           nvim-lspconfig
           # Autocompletion...

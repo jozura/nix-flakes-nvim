@@ -1,5 +1,7 @@
 local M = {}
 
+local diffthis_main = "<cmd>Gitsigns diffthis "..require("telescope_cfg").MAIN_BRANCH.." split=belowright<cr>"
+
 function M.setup()
 	local wk = require("which-key")
     -- local telescope = require("telescope.builtin")
@@ -18,10 +20,13 @@ function M.setup()
     { "<leader>ga", "<cmd>Gitsign stage_hunk<cr>", desc = "Stage hunk" },
     { "<leader>gb", "<cmd>Gitsigns blame_line<cr>", desc = "Git Blame" },
     { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Git commits" },
-    { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Git Diff" },
+    { "<leader>gd", group = "git diff" },
+    { "<leader>gdu", "<cmd>Gitsigns diffthis split=belowright<cr>", desc = "Git Diff against unstaged" },
+    { "<leader>gdm", diffthis_main, desc = "Git Diff against $PROJECT_MAIN_BRANCH or main" },
     { "<leader>gf", "<cmd>Gitsign stage_buffer<cr>", desc = "Stage buffer" },
     { "<leader>gh", "<cmd>Gitsign toggle_linehl<cr>", desc = "Toggle line highlight" },
     { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
+    { "<leader>gp", require('telescope_cfg').changed_on_branch, desc = "Git PR preview" },
     { "<leader>gu", "<cmd>Gitsign undo_stage_hunk<cr>", desc = "Undo stage hunk" },
     { "<leader>gw", "<cmd>Telescope git stash<cr>", desc = "Show Git Stash" },
     { "<leader>h", group = "hunks" },
