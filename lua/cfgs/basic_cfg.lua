@@ -66,6 +66,17 @@ function M.setup()
 	-- Always show a two character column next to the line number
 	vim.wo.signcolumn = "yes"
 
+    -- VimWiki config
+    vim.g.vimwiki_list = {
+        {
+          path = '~/vimwiki/',
+          syntax = 'markdown',
+          ext = 'md',
+        }
+    }
+    -- Treat md files only inside the wiki folder as VimWiki entries
+    vim.g.vimwiki_global_ext = 0
+
     setKeybindings()
 end
 

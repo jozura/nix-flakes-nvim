@@ -72,6 +72,11 @@
           marks-nvim
           # auto parenthesis
           nvim-autopairs
+          # Let's try to write something..
+          vimwiki
+          # Preview markdown files
+          markdown-preview-nvim
+          # An experimental neovim plugin I created, I don't really use this :D
           clojure-test-tree-nvim
         ];
         additionalDeps = with pkgs; [
