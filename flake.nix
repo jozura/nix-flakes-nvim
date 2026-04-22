@@ -44,7 +44,7 @@
           # Navigation (find files, find references, etc..)
           telescope-nvim
           # Colorscheme
-          kanagawa-nvim
+          catppuccin-nvim
           # File explorer and icons for it
           nvim-tree-lua 
           nvim-web-devicons
