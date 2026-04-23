@@ -29,6 +29,15 @@
             sha256 = "sha256-Sw2sO0o55b8BZsDIrZPj9pztrJnh7bHf52k8RSMWyz8=";
           };
         };
+        kvlt = pkgs.vimUtils.buildVimPlugin {
+          name = "kvlt";
+          src = pkgs.fetchFromGitHub {
+            owner = "metalelf0";
+            repo = "black-metal-theme-neovim";
+            rev = "main";
+            sha256 = "sha256-0RY/kek2QoL3ZIWehJFQIFOOpAgCrh/POpKklzQ2UKw=";
+          };
+        };
         startPlugins = with pkgs.vimPlugins; [
           # For setting keybindings
           which-key-nvim
@@ -44,6 +53,7 @@
           # Navigation (find files, find references, etc..)
           telescope-nvim
           # Colorscheme
+          kvlt
           catppuccin-nvim
           # File explorer and icons for it
           nvim-tree-lua 
