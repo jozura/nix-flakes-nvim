@@ -100,6 +100,7 @@
         	nodePackages.typescript-language-server
           clojure-lsp
           haskellPackages.haskell-language-server
+          clang-tools
         ];
         luaConfig = (import ./lua) pkgs;
         

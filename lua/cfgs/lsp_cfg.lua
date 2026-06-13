@@ -51,6 +51,7 @@ function M.setup()
         'hls',
         'tailwindcss',
         'lua_ls',
+        'clangd'
     })
 end
 
