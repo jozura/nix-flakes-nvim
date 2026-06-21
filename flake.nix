@@ -91,6 +91,8 @@
           markdown-preview-nvim
           # ESP32 Development
           esp32-nvim
+          # Needed by esp32.nvim
+          snacks-nvim
         ];
         additionalDeps = with pkgs; [
           # Required by telescope plugin for fuzzy finding
