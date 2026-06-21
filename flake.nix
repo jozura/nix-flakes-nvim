@@ -20,15 +20,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         nil = nil-flake.packages.${system}.nil;
         zls = zls-flake.packages.${system}.zls;
-        clojure-test-tree-nvim = pkgs.vimUtils.buildVimPlugin {
-          name = "clojure-test-tree-nvim";
-          src = pkgs.fetchFromGitHub {
-            owner = "jozura";
-            repo = "clojure-test-tree.nvim";
-            rev = "main";
-            sha256 = "sha256-Sw2sO0o55b8BZsDIrZPj9pztrJnh7bHf52k8RSMWyz8=";
-          };
-        };
+
         kvlt = pkgs.vimUtils.buildVimPlugin {
           name = "kvlt";
           src = pkgs.fetchFromGitHub {
@@ -38,6 +30,17 @@
             sha256 = "sha256-0RY/kek2QoL3ZIWehJFQIFOOpAgCrh/POpKklzQ2UKw=";
           };
         };
+
+        esp32-nvim = pkgs.vimUtils.buildVimPlugin {
+          name = "esp32-nvim";
+          src = pkgs.fetchFromGitHub {
+            owner = "Aietes";
+            repo = "esp32.nvim";
+            rev = "0.3.0";
+            sha256 = "sha256-2A236Nrx8BTvUnvqaaiZdXV17pxmTFhGKQ+adEJghik=";
+          };
+        };
+
         startPlugins = with pkgs.vimPlugins; [
           # For setting keybindings
           which-key-nvim
@@ -86,8 +89,8 @@
           vimwiki
           # Preview markdown files
           markdown-preview-nvim
-          # An experimental neovim plugin I created, I don't really use this :D
-          clojure-test-tree-nvim
+          # ESP32 Development
+          esp32-nvim
         ];
         additionalDeps = with pkgs; [
           # Required by telescope plugin for fuzzy finding

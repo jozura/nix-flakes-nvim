@@ -40,4 +40,3 @@ nvimAutopair.setup()
 marks.setup()
 telescope.setup()
 
-require('clojure-test-tree').setup()
