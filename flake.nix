@@ -2,7 +2,7 @@
   description = "My neovim configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     nil-flake.url = "github:oxalica/nil";
     zls-flake.url = "github:zigtools/zls/0.15.1";
@@ -102,7 +102,6 @@
           nix
           lua-language-server
           basedpyright
-        	nodePackages.typescript-language-server
           clojure-lsp
           haskellPackages.haskell-language-server
         ];
