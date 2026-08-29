@@ -42,6 +42,26 @@ function M.setup()
         },
     })
 
+    vim.lsp.config('rust_analyzer', {
+        settings = {
+            ['rust-analyzer'] = {
+                cargo = {
+                    allFeatures = true,
+                    loadOutDirsFromCheck = true,
+                },
+                checkOnSave = {
+                    command = "clippy",
+                },
+                diagnostics = {
+                    enable = true,
+                },
+                inlayHints = {
+                    enable = true,
+                },
+            },
+        },
+    })
+
 
     vim.lsp.config('clangd', require("esp32").lsp_config())
 
@@ -54,7 +74,8 @@ function M.setup()
         'hls',
         'tailwindcss',
         'lua_ls',
-        'clangd'
+        'clangd',
+        'rust_analyzer'
     })
 end
 

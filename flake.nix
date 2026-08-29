@@ -101,6 +101,7 @@
           zls
           basedpyright
           clojure-lsp
+          rust-analyzer
           haskellPackages.haskell-language-server
         ];
         luaConfig = (import ./lua) pkgs;
