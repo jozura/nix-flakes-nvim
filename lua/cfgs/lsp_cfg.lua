@@ -63,7 +63,7 @@ function M.setup()
     })
 
 
-    vim.lsp.config('clangd', require("esp32").lsp_config())
+    -- vim.lsp.config('clangd', require("esp32").lsp_config())
 
     vim.lsp.enable({
         'clojure_lsp',
@@ -72,7 +72,7 @@ function M.setup()
         'ts_ls',
         'nil_ls',
         'hls',
-        'tailwindcss',
+        -- 'tailwindcss',
         'lua_ls',
         'clangd',
         'rust_analyzer'

@@ -28,15 +28,15 @@
           };
         };
 
-        esp32-nvim = pkgs.vimUtils.buildVimPlugin {
-          name = "esp32-nvim";
-          src = pkgs.fetchFromGitHub {
-            owner = "Aietes";
-            repo = "esp32.nvim";
-            rev = "0.3.0";
-            sha256 = "sha256-2A236Nrx8BTvUnvqaaiZdXV17pxmTFhGKQ+adEJghik=";
-          };
-        };
+        # esp32-nvim = pkgs.vimUtils.buildVimPlugin {
+        #   name = "esp32-nvim";
+        #   src = pkgs.fetchFromGitHub {
+        #     owner = "Aietes";
+        #     repo = "esp32.nvim";
+        #     rev = "0.3.0";
+        #     sha256 = "sha256-2A236Nrx8BTvUnvqaaiZdXV17pxmTFhGKQ+adEJghik=";
+        #   };
+        # };
 
         startPlugins = with pkgs.vimPlugins; [
           # For setting keybindings
@@ -86,10 +86,10 @@
           vimwiki
           # Preview markdown files
           markdown-preview-nvim
-          # ESP32 Development
-          esp32-nvim
+          # # ESP32 Development
+          # esp32-nvim
           # Needed by esp32.nvim
-          snacks-nvim
+          # snacks-nvim
         ];
         additionalDeps = with pkgs; [
           # Required by telescope plugin for fuzzy finding
